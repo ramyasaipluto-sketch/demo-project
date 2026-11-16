@@ -45,3 +45,19 @@ def modulo(a: Number, b: Number) -> Number:
     if b == 0:
         raise ValueError("modulo by zero")
     return a % b
+
+
+def floor_divide(a: Number, b: Number) -> Number:
+    """Return ``a`` floor-divided by ``b``.
+
+    Raises:
+        ValueError: If ``b`` is zero.
+    """
+    if b == 0:
+        raise ValueError("floor division by zero")
+    return a // b
+
+
+def absolute(a: Number) -> Number:
+    """Return the non-negative magnitude of ``a``."""
+    return abs(a)
