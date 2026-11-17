@@ -61,3 +61,72 @@ class TestDivide:
     def test_division_by_zero_float(self) -> None:
         with pytest.raises(ValueError, match="division by zero"):
             calculator.divide(1.0, 0.0)
+
+
+class TestPower:
+    def test_integers(self) -> None:
+        assert calculator.power(2, 3) == 8
+
+    def test_decimals(self) -> None:
+        assert calculator.power(0.5, 2) == pytest.approx(0.25)
+
+    def test_negative_base(self) -> None:
+        assert calculator.power(-2, 3) == -8
+
+    def test_zero_exponent(self) -> None:
+        assert calculator.power(99, 0) == 1
+
+
+class TestModulo:
+    def test_integers(self) -> None:
+        assert calculator.modulo(10, 3) == 1
+
+    def test_negative_dividend(self) -> None:
+        assert calculator.modulo(-10, 3) == 2
+
+    def test_negative_divisor(self) -> None:
+        assert calculator.modulo(10, -3) == -2
+
+    def test_decimals(self) -> None:
+        assert calculator.modulo(5.5, 2.0) == pytest.approx(1.5)
+
+    def test_modulo_by_zero_raises(self) -> None:
+        with pytest.raises(ValueError, match="modulo by zero"):
+            calculator.modulo(1, 0)
+
+    def test_modulo_by_zero_float(self) -> None:
+        with pytest.raises(ValueError, match="modulo by zero"):
+            calculator.modulo(1.0, 0.0)
+
+
+class TestFloorDivide:
+    def test_integers(self) -> None:
+        assert calculator.floor_divide(7, 2) == 3
+
+    def test_negative(self) -> None:
+        assert calculator.floor_divide(-7, 2) == -4
+
+    def test_decimals(self) -> None:
+        assert calculator.floor_divide(7.5, 2.0) == pytest.approx(3.0)
+
+    def test_floor_division_by_zero_raises(self) -> None:
+        with pytest.raises(ValueError, match="floor division by zero"):
+            calculator.floor_divide(1, 0)
+
+    def test_floor_division_by_zero_float(self) -> None:
+        with pytest.raises(ValueError, match="floor division by zero"):
+            calculator.floor_divide(1.0, 0.0)
+
+
+class TestAbsolute:
+    def test_positive(self) -> None:
+        assert calculator.absolute(5) == 5
+
+    def test_negative(self) -> None:
+        assert calculator.absolute(-5) == 5
+
+    def test_zero(self) -> None:
+        assert calculator.absolute(0) == 0
+
+    def test_decimals(self) -> None:
+        assert calculator.absolute(-2.5) == pytest.approx(2.5)
